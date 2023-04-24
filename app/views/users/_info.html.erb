@@ -8,6 +8,17 @@
 	  <th>introduction</th>
 	  <th><%= user.introduction %></th>
   </tr>
+  <tr>
+    <td>follows</td>
+    <td><%= link_to user.followings.count, user_followings_path(user) %></td>
+  </tr>
+  <tr>
+    <td>followers</td>
+    <td><%= link_to user.followers.count, user_followers_path(user) %></td>
+  </tr>
+  <tr>
+    <td><%= render "relationships/btn", user: user %></td>
+  </tr>
 </table>
 　
 <div class='row'>
