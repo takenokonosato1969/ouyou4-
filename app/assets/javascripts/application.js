@@ -1,2 +1,2 @@
 //= require jquery
-//= require rails-
+//= require rails-ujs
