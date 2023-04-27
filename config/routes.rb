@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   
   get "search" => "searches#search"
+  resources :chats, only: [:show, :create]
 
   resources :users, only: [:index,:show,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
