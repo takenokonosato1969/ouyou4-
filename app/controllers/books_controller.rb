@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.includes(:user, :book_comments, :favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     @book = Book.new
   end
 
