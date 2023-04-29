@@ -14,12 +14,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.includes(:user, :book_comments, :favorites).sort {|a,b| b.favorites.size <=> a.favorites.size}
     @book = Book.new
-    @today_books = Book.created_today.all
-    @yesterday_books = Book.created_yesterday.all
-    @this_week_books = Book.created_this_week.all
-    @last_week_books = Book.created_last_week.all
-  #   @today_books = Book.created_today.includes(:user, :book_comments, :favorites)
-  #   @yesterday_books = Book.created_yesterday.includes(:user, :book_comments, :favorites)
+
   end
 
   def create
