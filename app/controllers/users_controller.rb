@@ -4,11 +4,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    @book = Book.new
     @today_book = @books.created_today
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
     @last_week_book = @books.created_last_week
+    @book = Book.new
+    @this_week_book_counts = []
+    # ここでは空の配列を定義しています。この配列には投稿された本の数を１日ずつ追加します。
+    6.downto(0) do |n|
+      @this_week_book_counts.push(@books.where(created_at: n.day.ago.all_day).count)
+    end
+    # downtoメソッドは初期値から１ずつ減らしながら引数の値になるまで処理
   end
 
   def index
