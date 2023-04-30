@@ -9,15 +9,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
-
-      <h2>投稿数の前日比・前週比</h2>
-        <% @today_books = instance_variable_get(:@today_books) %>
-        <% @yesterday_books = instance_variable_get(:@yesterday_books) %>
-        <%= render "day", today_books: @today_books, yesterday_books: @yesterday_books %>
-        
-        <% @this_week_books = instance_variable_get(:@this_week_books) %>
-        <% @last_week_books = instance_variable_get(:@last_week_books) %>
-        <%= render "week", this_week_books: @this_week_books, last_week_books: @last_week_books %>
+      <%= render 'book_index', books: @books %>
 
     </div>
   </div>
