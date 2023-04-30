@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    
     @today_book = @books.created_today
     @yesterday_book = @books.created_yesterday
     @this_week_book = @books.created_this_week
@@ -16,13 +15,6 @@ class UsersController < ApplicationController
       @this_week_book_counts.push(@books.where(created_at: n.day.ago.all_day).count)
     end
     # downtoメソッドは初期値から１ずつ減らしながら引数の値になるまで処理
-    if params[:created_at].present?
-      @search_books = @books.where(created_at: params[:created_at].to_date.all_day)
-      render :search_form
-    else
-      flash[:error] = "日付が指定されていません"
-      # redirect_to :back and return
-    end
   end
 
   def index
@@ -41,6 +33,14 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # def daily_posts
+  def search_form
+    user = User.find(params[:user_id])
+    @books = user.books.where(created_at: params[:created_at].to_date.all_day)
+    render :search_form
+    # render :daily_posts_form
   end
 
 
