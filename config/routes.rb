@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     get 'search_form' => 'users#search_form'
     get "daily_posts" => "users#daily_posts"
   end
+  
+  resources :groups, except: [:destroy]
 
 end
