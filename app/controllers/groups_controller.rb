@@ -2,6 +2,10 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   
+  def new
+    @group = Group.new
+  end
+  
   def index
     @book = Book.new
     @groups = Group.all
@@ -12,9 +16,6 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
   
-  def new
-    @group = Group.new
-  end
   
   def create
     @group = Group.new(group_params)
@@ -41,7 +42,7 @@ class GroupsController < ApplicationController
   private
   
   def group_params
-    params.require(:group).permit(:name, :introduction, :image)
+    params.require(:group).permit(:name, :introduction, :group_image)
   end
   
   def ensure_correct_user

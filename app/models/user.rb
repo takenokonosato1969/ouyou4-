@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   # 自分がフォローされる関係性
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id",dependent: :destroy
   # ↑被フォロー関係で参照。自分をフォローしている人
