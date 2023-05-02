@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
     @group.users << current_user
     redirect_to groups_path
   end
+  # 変更を加えるならコントローラーを増やしてルーティング消してってやればいい
   
   
   def create
