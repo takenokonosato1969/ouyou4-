@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     get "join" => "groups#join"
     get "new/mail" => "groups#new_mail"
     get "send/mail" => "groups#send_mail"
+    resource :group_users, only: [:create, :destroy]
+    resources :event_notices, only: [:new, :create]
+    get "event_notices" => "event_notices#sent"
   end
 
 end
